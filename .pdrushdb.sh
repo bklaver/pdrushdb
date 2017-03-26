@@ -21,7 +21,7 @@ function pdrushdb() {
     environment=$1
   fi
   
-  echo "Create backup on ${environment} server"
+  echo "Creating a backup on the ${environment} environment."
   echo "terminus backup:create $pantheon_site_alias.$environment --element=db"
   terminus backup:create $pantheon_site_alias.$environment --element=db
   echo "Download backup as $pantheon_site_alias.sql.gz"

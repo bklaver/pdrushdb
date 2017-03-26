@@ -1,5 +1,4 @@
 
-
 function pdrushdb() {  
   # This works if:
   # -you have terminus and drush installed
@@ -11,8 +10,6 @@ function pdrushdb() {
   # pdrushdb [dev|test]
   # E.g.) drushdb test
   
-
-  
   # Gets the current directory name. This corresponds to pantheons site alias.
   pantheon_site_alias=${PWD##*/}
 
@@ -22,9 +19,6 @@ function pdrushdb() {
     # Grabbing from the live environment.    
   else
     environment=$1
-        echo $environment
-    echo test
-    
   fi
   
   echo "Create backup on ${environment} server"
@@ -36,7 +30,7 @@ function pdrushdb() {
   
   if file "${pantheon_site_alias}-${environment}.sql.gz" | grep -q "gzip compressed data"; then
     echo "Gunzip and importing..."
-    gunzip -c $pantheon_site_alias.$environment.sql.gz | drush sql-cli
+    gunzip -c $pantheon_site_alias-$environment.sql.gz | drush sql-cli
   else
     # I don't think this ever happens.
     echo "Importing..."
